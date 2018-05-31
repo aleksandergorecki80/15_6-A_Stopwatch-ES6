@@ -19,11 +19,12 @@ class App extends React.Component {
     });
   }
   start() {
-    this.setState({
-      running: true
-    });
-    this.watch = setInterval(() => this.step(), 10);
-    console.log(this.state.running + 'this.state.running');
+    if (!this.state.running) {
+      this.setState({
+        running: true
+      });
+      this.watch = setInterval(() => this.step(), 10);
+    }
   }
 
   stop() {
@@ -31,6 +32,13 @@ class App extends React.Component {
     this.setState({
       running: false
     });
+    clearInterval(this.watch);
+  }
+
+  step() {
+    if (!this.running) return;
+    this.calculate();
+    this.print();
   }
 
   calculate() {
@@ -58,6 +66,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.running + 'this.state.running');
     const stopwatch = new App();
     return React.createElement(
       "div",

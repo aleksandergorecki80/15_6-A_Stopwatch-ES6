@@ -19,11 +19,12 @@ class App extends React.Component {
   });
  }
 start(){
+      if (!this.state.running){
       this.setState ({
-      running: true
-    });
-      this.watch = setInterval(() => this.step(), 10);
-      console.log(this.state.running + 'this.state.running');
+        running: true
+       });
+      this.watch = setInterval(() => this.step(), 10);        
+      }
     }
 
   stop(){
@@ -31,7 +32,14 @@ start(){
       this.setState ({
         running: false
       });
+      clearInterval(this.watch);
     }
+
+  step() {
+    if (!this.running) return;
+    this.calculate();
+    this.print();
+  }
 
   calculate() {
     this.times.miliseconds += 1;
@@ -60,6 +68,7 @@ start(){
   }
 
  render() {
+  console.log(this.state.running + 'this.state.running');
 const stopwatch = new App();
   return (
 	<div className="content">
