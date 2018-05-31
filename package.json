@@ -1,0 +1,21 @@
+{
+  "name": "15_3_Babel-konfiguracja-srodowiska",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "server": "http-server",
+    "start": "babel js --presets react  -d --watch --out -d js_compiled"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1"
+  },
+  "dependencies": {
+    "http-server": "^0.11.1"
+  },
+  "description": ""
+}
