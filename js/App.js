@@ -8,31 +8,30 @@ class App extends React.Component {
         miliseconds: 0
         //format: 'kki'
     }
-    console.log(constructor);
-    console.log('constructor tutaj');
  }
 
  reset() {
-  console.log('reset tutaj');
+   console.log("reset");
   this.setState({
         minutes: 0,
         seconds: 0,
         miliseconds: 0
   });
  }
-
-   start() {
-    if (!this.running) {
-      this.running = true;
+start(){
+      this.setState ({
+      running: true
+    });
       this.watch = setInterval(() => this.step(), 10);
+      console.log(this.state.running + 'this.state.running');
     }
-  }
 
-  step() {
-    if (!this.running) return;
-    this.calculate();
-    this.print();
-  }
+  stop(){
+    console.log("stop");
+      this.setState ({
+        running: false
+      });
+    }
 
   calculate() {
     this.times.miliseconds += 1;
@@ -47,7 +46,6 @@ class App extends React.Component {
   }
 
   pad0(value) {
-    console.log('pad0');
      let result = value.toString();
         if (result.length < 2) {
         result = "0" + result;
@@ -56,7 +54,6 @@ class App extends React.Component {
   }
 
  format() {
-  console.log('format');
     return `${this.pad0(this.state.minutes)}:${this.pad0(this.state.seconds)}:${this.pad0(
       Math.floor(this.state.miliseconds)
     )}`;
@@ -64,17 +61,16 @@ class App extends React.Component {
 
  render() {
 const stopwatch = new App();
-console.log('render');
   return (
 	<div className="content">
       <div className="controls">
-        <a className="button" href="#" >Start</a> 
-        <a className="button" href="#" id="stop">Stop</a> 
+        <a className="button" href="#" onClick={this.start.bind(this)}>Start</a> 
+        <a className="button" href="#" onClick={this.stop.bind(this)}>Stop</a> 
         <a className="button" href="#" id="reset">Reset</a> 
         <a className="button" href="#" id="saveResoult">Save resoult</a> 
         <a className="button" href="#" id="clearResoults">Clean resoult</a>
       </div>
-            <div className="stopwatch">{this.format()}</div>
+            <div className="stopwatch">'{this.format()}'</div>
       <ol id="resoults"></ol>
       <LifeStages componentName="App" />
 	</div>
