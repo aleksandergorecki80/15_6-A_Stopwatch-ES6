@@ -1,18 +1,18 @@
 class Stopwatch extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+  constructor(display, props) {
+    super(display, props);
+    this.display = display, this.state = {
       running: false
     };
   }
-
-  reset() {
-    console.log("reset");
-    this.props.miliseconds = 0;
-    this.props.seconds = 0;
-    this.props.minutes = 0;
-  }
-
+  /*
+    reset() {
+      console.log("reset");
+      this.props.miliseconds = 0;
+      this.props.seconds = 0;
+      this.props.minutes = 0;
+    }
+  */
   start() {
     if (!this.state.running) {
       this.setState({
@@ -42,6 +42,10 @@ class Stopwatch extends React.Component {
     }
   }
 
+  print() {
+    this.display.innerText = this.format(this.times);
+  }
+
   pad0(value) {
     let result = value.toString();
     if (result.length < 2) {
@@ -55,8 +59,9 @@ class Stopwatch extends React.Component {
   }
 
   render() {
-    console.log(this.state.running + 'this.state.running');
-    const stopwatch = new App();
+    console.log(this.state.running + "this.state.running");
+    console.log(this.state.display + "display");
+    const stopwatch = new Stopwatch(document.querySelector(".stopwatch"));
     return React.createElement(
       "div",
       { className: "content" },
@@ -75,13 +80,13 @@ class Stopwatch extends React.Component {
         ),
         React.createElement(
           "a",
-          { className: "button", href: "#", id: "reset" },
+          { className: "button", href: "#", onClick: this.reset.bind(this) },
           "Reset"
         ),
         React.createElement(
           "a",
           { className: "button", href: "#", id: "saveResoult" },
-          "Save resoult"
+          this.props.seconds
         ),
         React.createElement(
           "a",
