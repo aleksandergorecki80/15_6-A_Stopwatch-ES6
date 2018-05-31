@@ -1,30 +1,27 @@
 class App extends React.Component {
-  constructor(display) {
-    super();
-    this.running = false;
-    // this.display = display;
-    this.reset();
-    // this.print(this.times);
-  }
-
-  reset() {
-    this.times = {
+  constructor(props) {
+    super(props);
+    this.state = {
+      running: false,
       minutes: 0,
       seconds: 0,
       miliseconds: 0
+      //format: 'kki'
     };
-    this.print();
+    console.log(constructor);
+    console.log('constructor tutaj');
   }
-  /*
-  print() {
-    this.display.innerText = this.format(this.times);
+
+  reset() {
+    console.log('reset tutaj');
+    this.setState({
+      minutes: 0,
+      seconds: 0,
+      miliseconds: 0
+    });
   }
-  */
-  format(times) {
-    return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`;
-  }
+
   start() {
-    console.log('start');
     if (!this.running) {
       this.running = true;
       this.watch = setInterval(() => this.step(), 10);
@@ -35,10 +32,6 @@ class App extends React.Component {
     if (!this.running) return;
     this.calculate();
     this.print();
-  }
-  stop() {
-    this.running = false;
-    clearInterval(this.watch);
   }
 
   calculate() {
@@ -52,64 +45,63 @@ class App extends React.Component {
       this.times.seconds = 0;
     }
   }
-  saveResoult(times) {
-    const resoults = document.getElementById("resoults");
-    const time = document.createTextNode(this.format(times));
 
-    const li = document.createElement("li");
-    li.appendChild(time);
-    resoults.appendChild(li);
-  }
-  clearResoults() {
-    const list = document.getElementById("resoults");
-    const childs = list.childNodes;
-    const howMany = childs.length;
-    for (let i = 0; i < howMany; i++) {
-      list.removeChild(list.childNodes[0]);
+  pad0(value) {
+    console.log('pad0');
+    let result = value.toString();
+    if (result.length < 2) {
+      result = "0" + result;
     }
+    return result;
+  }
+
+  format() {
+    console.log('format');
+    return `${this.pad0(this.state.minutes)}:${this.pad0(this.state.seconds)}:${this.pad0(Math.floor(this.state.miliseconds))}`;
   }
 
   render() {
-    const stopwatch = new Stopwatch('kki');
-
+    const stopwatch = new App();
+    console.log('render');
     return React.createElement(
-      "div",
-      { className: "content" },
+      'div',
+      { className: 'content' },
       React.createElement(
-        "div",
-        { className: "controls" },
+        'div',
+        { className: 'controls' },
         React.createElement(
-          "a",
-          { className: "button", href: "#", onClick: stopwatch.start() },
-          "Start"
+          'a',
+          { className: 'button', href: '#' },
+          'Start'
         ),
         React.createElement(
-          "a",
-          { className: "button", href: "#", id: "stop" },
-          "Stop"
+          'a',
+          { className: 'button', href: '#', id: 'stop' },
+          'Stop'
         ),
         React.createElement(
-          "a",
-          { className: "button", href: "#", id: "reset" },
-          "Reset"
+          'a',
+          { className: 'button', href: '#', id: 'reset' },
+          'Reset'
         ),
         React.createElement(
-          "a",
-          { className: "button", href: "#", id: "saveResoult" },
-          "Save resoult"
+          'a',
+          { className: 'button', href: '#', id: 'saveResoult' },
+          'Save resoult'
         ),
         React.createElement(
-          "a",
-          { className: "button", href: "#", id: "clearResoults" },
-          "Clean resoult"
+          'a',
+          { className: 'button', href: '#', id: 'clearResoults' },
+          'Clean resoult'
         )
       ),
       React.createElement(
-        "div",
-        { className: "stopwatch" },
-        this.times
+        'div',
+        { className: 'stopwatch' },
+        this.format()
       ),
-      React.createElement("ol", { id: "resoults" })
+      React.createElement('ol', { id: 'resoults' }),
+      React.createElement(LifeStages, { componentName: 'App' })
     );
   }
 }
