@@ -1,5 +1,5 @@
 class Test extends React.Component {
-  constructor(display) {
+  constructor(props) {
     super(props);
    // this.display = display,
     this.state = {
@@ -12,9 +12,9 @@ class Test extends React.Component {
   return (
     <div className="stopwatch">kki
 
-         {this.state.minutes}
-          {this.this.seconds}
-          {this.state.miliseconds}
+         {this.props.minutes}
+          {this.props.seconds}
+          {this.props.miliseconds}
 
     </div>
 

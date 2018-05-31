@@ -6,14 +6,12 @@ class Stopwatch extends React.Component {
       running: false
     };
   }
-/*
+
   reset() {
     console.log("reset");
-    this.props.miliseconds = 0;
-    this.props.seconds = 0;
-    this.props.minutes = 0;
+
   }
-*/
+
   start() {
     if (!this.state.running) {
       this.setState({
@@ -78,7 +76,7 @@ class Stopwatch extends React.Component {
             Reset
           </a>
           <a className="button" href="#" id="saveResoult">
-            {this.props.seconds}
+            {this.props.seconds} props
           </a>
           <a className="button" href="#" id="clearResoults">
             Clean resoult

@@ -5,14 +5,11 @@ class Stopwatch extends React.Component {
       running: false
     };
   }
-  /*
-    reset() {
-      console.log("reset");
-      this.props.miliseconds = 0;
-      this.props.seconds = 0;
-      this.props.minutes = 0;
-    }
-  */
+
+  reset() {
+    console.log("reset");
+  }
+
   start() {
     if (!this.state.running) {
       this.setState({
@@ -86,7 +83,8 @@ class Stopwatch extends React.Component {
         React.createElement(
           "a",
           { className: "button", href: "#", id: "saveResoult" },
-          this.props.seconds
+          this.props.seconds,
+          " props"
         ),
         React.createElement(
           "a",

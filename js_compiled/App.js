@@ -11,6 +11,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.minutes);
     return React.createElement(
       "div",
       { className: "stopwatch" },
