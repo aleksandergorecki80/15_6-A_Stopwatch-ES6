@@ -2,14 +2,17 @@ class Stopwatch extends React.Component {
   constructor(display, props) {
     super(display, props);
     this.display = display,
+   // this.set = this.setProps(),
     this.state = {
       running: false
     };
   }
 
   reset() {
-    console.log("reset");
-
+    this.minutes = this.props.minutes;
+    this.seconds = this.props.seconds;
+    this.miliseconds = this.props.miliseconds;
+    console.log(this.minutes + ' , ' + this.seconds + ' , ' + this.miliseconds);
   }
 
   start() {
