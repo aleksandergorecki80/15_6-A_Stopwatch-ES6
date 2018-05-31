@@ -1,18 +1,22 @@
 class Stopwatch extends React.Component {
   constructor(display, props) {
     super(display, props);
-    this.display = display,
-    // this.set = this.setProps(),
+    this.display = display;
     this.state = {
       running: false
     };
+    console.log(this.display + "display");
+    this.print(display);
+    this.reset();
   }
 
   reset() {
-    this.minutes = this.props.minutes;
-    this.seconds = this.props.seconds;
-    this.miliseconds = this.props.miliseconds;
-    console.log(this.minutes + ' , ' + this.seconds + ' , ' + this.miliseconds);
+    this.times = {
+      minutes: 0,
+      seconds: 0,
+      miliseconds: 0
+    };
+    this.print();
   }
 
   start() {
@@ -45,7 +49,8 @@ class Stopwatch extends React.Component {
   }
 
   print() {
-    this.display.innerText = this.format(this.times);
+    console.log(' PRINT');
+    //   this.display.innerText = this.format(this.times);
   }
 
   pad0(value) {
@@ -57,48 +62,48 @@ class Stopwatch extends React.Component {
   }
 
   format() {
-    return `${this.pad0(this.state.minutes)}:${this.pad0(this.state.seconds)}:${this.pad0(Math.floor(this.state.miliseconds))}`;
+    return `${this.pad0(this.minutes)}:${this.pad0(this.seconds)}:${this.pad0(Math.floor(this.miliseconds))}`;
   }
 
   render() {
-    console.log(this.state.running + "this.state.running");
-    console.log(this.state.display + "display");
+    console.log(this.minutes + ' minuty w render');
     const stopwatch = new Stopwatch(document.querySelector(".stopwatch"));
+
     return React.createElement(
-      'div',
-      { className: 'content' },
+      "div",
+      { className: "content" },
       React.createElement(
-        'div',
-        { className: 'controls' },
+        "div",
+        { className: "controls" },
         React.createElement(
-          'a',
-          { className: 'button', href: '#', onClick: this.start.bind(this) },
-          'Start'
+          "a",
+          { className: "button", href: "#", onClick: this.start.bind(this) },
+          "Start"
         ),
         React.createElement(
-          'a',
-          { className: 'button', href: '#', onClick: this.stop.bind(this) },
-          'Stop'
+          "a",
+          { className: "button", href: "#", onClick: this.stop.bind(this) },
+          "Stop"
         ),
         React.createElement(
-          'a',
-          { className: 'button', href: '#', onClick: this.reset.bind(this) },
-          'Reset'
+          "a",
+          { className: "button", href: "#", onClick: this.reset.bind(this) },
+          "Reset"
         ),
         React.createElement(
-          'a',
-          { className: 'button', href: '#', id: 'saveResoult' },
+          "a",
+          { className: "button", href: "#", id: "saveResoult" },
           this.props.seconds,
-          ' props'
+          " props"
         ),
         React.createElement(
-          'a',
-          { className: 'button', href: '#', id: 'clearResoults' },
-          'Clean resoult'
+          "a",
+          { className: "button", href: "#", id: "clearResoults" },
+          "Clean resoult"
         )
       ),
-      React.createElement('ol', { id: 'resoults' }),
-      React.createElement(LifeStages, { componentName: 'App' })
+      React.createElement("ol", { id: "resoults" }),
+      React.createElement(LifeStages, { componentName: "App" })
     );
   }
 }
