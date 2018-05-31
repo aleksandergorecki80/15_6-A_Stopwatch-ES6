@@ -35,12 +35,6 @@ class App extends React.Component {
     clearInterval(this.watch);
   }
 
-  step() {
-    if (!this.running) return;
-    this.calculate();
-    this.print();
-  }
-
   calculate() {
     this.times.miliseconds += 1;
     if (this.times.miliseconds >= 100) {
