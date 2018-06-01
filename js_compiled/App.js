@@ -3,24 +3,13 @@
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
-      minutes: 0,
-      seconds: 0,
-      miliseconds: 0
-    };
   }
 
   render() {
-    console.log(this.state.minutes);
     return React.createElement(
       "div",
-      { className: "stopwatch" },
-      "kki",
-      React.createElement(Stopwatch, {
-        minutes: this.state.minutes,
-        seconds: this.state.seconds,
-        miliseconds: this.state.miliseconds
-      })
+      null,
+      React.createElement(Stopwatch, null)
     );
   }
 }
