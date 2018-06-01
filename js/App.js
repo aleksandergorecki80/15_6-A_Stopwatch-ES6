@@ -9,6 +9,7 @@ class App extends React.Component {
   return (
       <div>
           <Stopwatch /> 
+          
           <LifeStages componentName="App" />
       </div>
   );
