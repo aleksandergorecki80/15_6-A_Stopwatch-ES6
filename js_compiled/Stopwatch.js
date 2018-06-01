@@ -4,15 +4,17 @@ class Stopwatch extends React.Component {
     this.state = {
       running: false
     };
+    this.times = {
+      miliseconds: this.props.miliseconds,
+      seconds: this.props.seconds,
+      minutes: this.props.minutes
+    };
   }
 
   render() {
-    //  console.log(display)
+
     // console.log(this.state.running + ' = STATE')
-    // const div = document.querySelector(".stopwatch"); 
-    //const stopwatch = new Stopwatch(document.querySelector(".stopwatch"));
-    // console.log(stopwatch);
-    // console.log(div);
+
     return React.createElement(
       "div",
       { className: "content" },
@@ -47,3 +49,14 @@ class Stopwatch extends React.Component {
     );
   }
 }
+
+Stopwatch.defaultProps = {
+  miliseconds: 400,
+  seconds: 320,
+  minutes: 0
+};
+Stopwatch.propTypes = {
+  miliseconds: React.PropTypes.number.isRequired,
+  seconds: React.PropTypes.number.isRequired,
+  minutes: React.PropTypes.number.isRequired
+};
