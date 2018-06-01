@@ -39,14 +39,14 @@ class Stopwatch extends React.Component {
       this.times.minutes += 1;
       this.times.seconds = 0;
     }
-    console.log(this.times.miliseconds + ' : ' + this.times.seconds + ' : ' +  this.times.minutes);
+    console.log(this.times.seconds + ' : ' +  this.times.minutes + ' : ' + this.times.miliseconds);
   }
 
   stop() {
     this.setState({
       running: false
     });
-    //clearInterval(this.watch);
+    clearInterval(this.watch);
   }
 
   reset() {
@@ -88,8 +88,8 @@ class Stopwatch extends React.Component {
 }
 
  Stopwatch.defaultProps = {
-    miliseconds: 400,
-    seconds: 320,
+    miliseconds: 0,
+    seconds: 0,
     minutes: 0
   }
   Stopwatch.propTypes = {
