@@ -51,25 +51,21 @@ class Stopwatch extends React.Component {
 
   reset() {
     console.log('reset');
-    /*
-      this.times.minutes = 0;
-      this.times.seconds = 0;
-      this.times.miliseconds = 0;
-      */
+
+    this.times.minutes = 0;
+    this.times.seconds = 0;
+    this.times.miliseconds = 0;
+
     //console.log(this.times.minutes);
   }
 
+  display() {
+    return `${pad0(this.times.minutes)}:${pad0(this.times.seconds)}:${pad0(Math.floor(this.times.miliseconds))}`;
+  }
+
   render() {
+
     console.log(this.times.minutes + ' miinutes');
-    let display = React.createElement(
-      'div',
-      { className: 'stopwatch' },
-      this.times.miliseconds,
-      ' / ',
-      this.times.seconds,
-      ' : ',
-      this.times.minutes
-    );
 
     console.log('STATE = ' + this.state.running);
 
@@ -101,7 +97,11 @@ class Stopwatch extends React.Component {
           'Clean resoult'
         )
       ),
-      display,
+      React.createElement(
+        'div',
+        { className: 'stopwatch' },
+        this.display()
+      ),
       React.createElement(
         'div',
         null,
@@ -122,3 +122,11 @@ Stopwatch.propTypes = {
   seconds: React.PropTypes.number.isRequired,
   minutes: React.PropTypes.number.isRequired
 };
+
+function pad0(value) {
+  let result = value.toString();
+  if (result.length < 2) {
+    result = "0" + result;
+  }
+  return result;
+}
