@@ -16,15 +16,32 @@ class Stopwatch extends React.Component {
       this.setState({
         running: true
       });
-      //this.watch = setInterval(() => this.step(), 10);
+      this.watch = setInterval(() => this.step(), 1000);
+      //this.watch = setInterval(() => alert('hello'), 5000);
     }
   }
 
   step() {
-    if (!this.running) return;
+    if (!this.state.running) return;
+
     this.calculate();
-    this.print();
+    //this.print();
   }
+
+  calculate() {
+    console.log('jestem tu');
+    this.times.miliseconds += 1;
+    if (this.times.miliseconds >= 100) {
+      this.times.seconds += 1;
+      this.times.miliseconds = 0;
+    }
+    if (this.times.seconds >= 60) {
+      this.times.minutes += 1;
+      this.times.seconds = 0;
+    }
+    console.log(this.times.miliseconds + ' : ' + this.times.seconds + ' : ' + this.times.minutes);
+  }
+
   stop() {
     this.setState({
       running: false
@@ -32,53 +49,65 @@ class Stopwatch extends React.Component {
     //clearInterval(this.watch);
   }
 
+  reset() {
+    console.log('reset');
+    /*
+      this.times.minutes = 0;
+      this.times.seconds = 0;
+      this.times.miliseconds = 0;
+      */
+    //console.log(this.times.minutes);
+  }
+
   render() {
+    console.log(this.times.minutes + ' miinutes');
+    let display = React.createElement(
+      'div',
+      { className: 'stopwatch' },
+      this.times.miliseconds,
+      ' / ',
+      this.times.seconds,
+      ' : ',
+      this.times.minutes
+    );
 
     console.log('STATE = ' + this.state.running);
 
     return React.createElement(
-      "div",
-      { className: "content" },
+      'div',
+      { className: 'content' },
       React.createElement(
-        "div",
-        { className: "controls" },
+        'div',
+        { className: 'controls' },
         React.createElement(
-          "a",
-          { className: "button", href: "#", onClick: this.start.bind(this) },
-          "Start"
+          'a',
+          { className: 'button', href: '#', onClick: this.start.bind(this) },
+          'Start'
         ),
         React.createElement(
-          "a",
-          { className: "button", href: "#", onClick: this.stop.bind(this) },
-          "Stop"
+          'a',
+          { className: 'button', href: '#', onClick: this.stop.bind(this) },
+          'Stop'
         ),
         React.createElement(
-          "a",
-          { className: "button", href: "#" },
-          "Reset"
+          'a',
+          { className: 'button', href: '#', onClick: this.reset.bind(this) },
+          'Reset'
         ),
-        React.createElement("a", { className: "button", href: "#" }),
+        React.createElement('a', { className: 'button', href: '#' }),
         React.createElement(
-          "a",
-          { className: "button", href: "#" },
-          "Clean resoult"
+          'a',
+          { className: 'button', href: '#' },
+          'Clean resoult'
         )
       ),
+      display,
       React.createElement(
-        "div",
-        { className: "stopwatch" },
-        this.times.miliseconds,
-        " : ",
-        this.times.seconds,
-        " : ",
-        this.times.minutes
-      ),
-      React.createElement(
-        "div",
+        'div',
         null,
-        React.createElement("ol", { id: "resoults" })
+        React.createElement('ol', { id: 'resoults' })
       ),
-      React.createElement(LifeStages, { componentName: "Stopwatch" })
+      React.createElement(LifeStages, { componentName: 'Stopwatch' })
     );
   }
 }
