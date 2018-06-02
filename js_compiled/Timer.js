@@ -13,8 +13,7 @@ class Timer extends React.Component {
     this.miliseconds = this.props.miliseconds;
     this.seconds = this.props.seconds;
     this.minutes = this.props.minutes;
-    this.resoultsTable = [];
-    this.kki = 'jjk';
+    this.resoultsTable = this.props.resoultsTable;;
   }
 
   step() {
@@ -85,82 +84,72 @@ class Timer extends React.Component {
 
   render() {
     console.log(this.resoultsTable);
-
-    const numbers = ['kki', 'jjk', 3, 4, 5];
-    const doubled = this.resoultsTable.map((number, key) => React.createElement(
-      'li',
+    const listElement = this.resoultsTable.map((number, key) => React.createElement(
+      "li",
       null,
       key,
-      ' - ',
+      ": ",
       number
     ));
-    console.log(doubled);
-
-    let divCounters = React.createElement(
-      'div',
-      { className: 'counters' },
-      'biggg kki'
-    );
 
     return React.createElement(
-      'div',
+      "div",
       null,
       React.createElement(
-        'div',
-        { className: 'content' },
+        "div",
+        { className: "content" },
         React.createElement(
-          'div',
-          { className: 'controls' },
+          "div",
+          { className: "controls" },
           React.createElement(
-            'a',
-            { className: 'button', href: '#', onClick: this.start.bind(this) },
-            'Start'
+            "a",
+            { className: "button", href: "#", onClick: this.start.bind(this) },
+            "Start"
           ),
           React.createElement(
-            'a',
-            { className: 'button', href: '#', onClick: this.stop.bind(this) },
-            'Stop'
+            "a",
+            { className: "button", href: "#", onClick: this.stop.bind(this) },
+            "Stop"
           ),
           React.createElement(
-            'a',
-            { className: 'button', href: '#', onClick: this.reset.bind(this) },
-            'Reset'
+            "a",
+            { className: "button", href: "#", onClick: this.reset.bind(this) },
+            "Reset"
           ),
           React.createElement(
-            'a',
-            { className: 'button', href: '#', onClick: this.savedTime.bind(this) },
-            'Save resoults'
+            "a",
+            { className: "button", href: "#", onClick: this.savedTime.bind(this) },
+            "Save resoults"
           ),
           React.createElement(
-            'a',
-            { className: 'button', href: '#', onClick: this.cleanResoults.bind(this) },
-            'Clean resoult'
+            "a",
+            { className: "button", href: "#", onClick: this.cleanResoults.bind(this) },
+            "Clean resoult"
           )
         ),
-        React.createElement('ol', { id: 'resoults' })
+        React.createElement("ol", { id: "resoults" })
       ),
       React.createElement(
-        'p',
+        "p",
         null,
-        ' state: ',
+        " state: ",
         this.state.seconds
       ),
       React.createElement(
-        'p',
+        "p",
         null,
         this.pad0(this.minutes),
-        ' : ',
+        " : ",
         this.pad0(this.seconds),
-        ' : ',
+        " : ",
         this.pad0(this.miliseconds)
       ),
       React.createElement(
-        'ul',
+        "ul",
         null,
-        ' ',
-        doubled
-      ),
-      divCounters
+        " ",
+        listElement
+      )
     );
   }
 }
@@ -168,10 +157,12 @@ class Timer extends React.Component {
 Timer.defaultProps = {
   miliseconds: 0,
   seconds: 0,
-  minutes: 0
+  minutes: 0,
+  resoultsTable: []
 };
 Timer.propTypes = {
   miliseconds: React.PropTypes.number.isRequired,
   seconds: React.PropTypes.number.isRequired,
-  minutes: React.PropTypes.number.isRequired
+  minutes: React.PropTypes.number.isRequired,
+  resoultsTable: React.PropTypes.array.isRequired
 };

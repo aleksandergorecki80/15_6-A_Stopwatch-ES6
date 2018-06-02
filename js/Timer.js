@@ -13,8 +13,7 @@
             this.miliseconds = this.props.miliseconds;
             this.seconds = this.props.seconds;
             this.minutes = this.props.minutes;
-            this.resoultsTable = [];
-            this.kki = 'jjk'
+            this.resoultsTable = this.props.resoultsTable;;
           }
 
           step() {
@@ -85,48 +84,33 @@
 
           render() {
             console.log(this.resoultsTable);
-
-const numbers = ['kki', 'jjk', 3, 4, 5];
-const doubled = this.resoultsTable.map((number, key) => <li>{key} - {number}</li>);
-console.log(doubled);
-
-
-
-            
-  let  divCounters = (
-    <div className="counters">
-          biggg kki
-    </div>
-   );
+            const listElement = this.resoultsTable.map((number, key) => <li>{key}: {number}</li>);
   
             return (
               <div>
-      <div className="content">
-        <div className="controls">
-          <a className="button" href="#" onClick={this.start.bind(this)}>
-            Start
-          </a>
-          <a className="button" href="#" onClick={this.stop.bind(this)}>
-            Stop
-          </a>
-          <a className="button" href="#" onClick={this.reset.bind(this)}>
-            Reset
-          </a>
-          <a className="button" href="#" onClick={this.savedTime.bind(this)}>Save resoults
-          </a>
-          <a className="button" href="#" onClick={this.cleanResoults.bind(this)}>
-            Clean resoult
-          </a>
-        </div>
-        <ol id="resoults" />
-        
-      </div>
+                <div className="content">
+                  <div className="controls">
+                    <a className="button" href="#" onClick={this.start.bind(this)}>
+                      Start
+                    </a>
+                    <a className="button" href="#" onClick={this.stop.bind(this)}>
+                      Stop
+                    </a>
+                    <a className="button" href="#" onClick={this.reset.bind(this)}>
+                      Reset
+                    </a>
+                    <a className="button" href="#" onClick={this.savedTime.bind(this)}>Save resoults
+                    </a>
+                    <a className="button" href="#" onClick={this.cleanResoults.bind(this)}>
+                      Clean resoult
+                    </a>
+                  </div>
+                  <ol id="resoults" />
+                  
+                </div>
                <p> state: {this.state.seconds}</p>
-               
                 <p>{this.pad0(this.minutes)} : {this.pad0(this.seconds)} : {this.pad0(this.miliseconds)}</p>
-
-                <ul> {doubled}</ul>
-              {divCounters}
+                <ul> {listElement}</ul>
               </div>
             );
           }
@@ -135,10 +119,12 @@ console.log(doubled);
  Timer.defaultProps = {
     miliseconds: 0,
     seconds: 0,
-    minutes: 0
+    minutes: 0,
+    resoultsTable: []
   }
   Timer.propTypes = {
     miliseconds: React.PropTypes.number.isRequired,
     seconds: React.PropTypes.number.isRequired,
     minutes: React.PropTypes.number.isRequired,
+    resoultsTable: React.PropTypes.array.isRequired,
   }
