@@ -7,10 +7,14 @@
             this.state = {
               running: false
             };
+            this.state = {
+              results: 0
+            };
             this.miliseconds = this.props.miliseconds;
             this.seconds = this.props.seconds;
             this.minutes = this.props.minutes;
-            this.namesDest = [1];
+            this.resoultsTable = [];
+            this.kki = 'jjk'
           }
 
           step() {
@@ -39,10 +43,6 @@
               return result;
             }
 
-
-
-        save
-
           start() {
             if (!this.state.running) {
             this.setState({
@@ -60,7 +60,6 @@
         }
 
         reset(){
-          console.log('RESET');
           this.setState({
               handler: 0
             });
@@ -70,18 +69,27 @@
         }
 
         savedTime(){
-          console.log('save0');
           let savedTime = `${this.pad0(this.minutes)} : ${this.pad0(this.seconds)} : ${this.pad0(this.miliseconds)}`;
           let result = savedTime.toString();
-          this.namesDest = [...this.namesDest, result];
-          console.log(this.namesDest);
-        }
-
-        
+          this.resoultsTable = [...this.resoultsTable, result];
+          this.setState(prevState => ({
+              resoults: prevState.results + 1
+            }));
+        } 
 
           render() {
-           //console.log(this.state.running);
-           console.log(this.namesDest);
+            console.log(this.resoultsTable);
+
+            let argume = [1, 5, 78, 9, 9, 4, 7, 5, 12];
+            function logAllArgumentsStary(argume) {
+                let lista = <h2>lista</h2>;
+           for (var i=0; i < argume.length; i++) {
+                console.log(argume[i]);
+               }
+               return lista;
+              }
+            
+
             return (
               <div>
       <div className="content">
@@ -107,9 +115,11 @@
                <p> state: {this.state.seconds}</p>
                
                 <p>{this.pad0(this.minutes)} : {this.pad0(this.seconds)} : {this.pad0(this.miliseconds)}</p>
-                <ol>
-                  <li>{this.namesDest}kki</li>
-                </ol>
+                
+                <p>kki</p>
+                <p>{this.kki}</p>
+                <p>{logAllArgumentsStary(argume)}</p>
+ 
               </div>
             );
           }
