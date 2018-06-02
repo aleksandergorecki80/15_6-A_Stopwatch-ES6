@@ -1,6 +1,9 @@
  class Timer extends React.Component {
           constructor(props) {
             super(props);
+
+
+
             this.state = { 
               handler: 0 
             };
@@ -79,17 +82,35 @@
 
           render() {
             console.log(this.resoultsTable);
-
-            let argume = [1, 5, 78, 9, 9, 4, 7, 5, 12];
+/*
+            let argume = ['raz', 'dwa', 'trzy'];
             function logAllArgumentsStary(argume) {
-                let lista = <h2>lista</h2>;
+                //let lista=<h2> nam </h2>;
+                let lista='';
+                //let lista=<h2> nam </h2>;
            for (var i=0; i < argume.length; i++) {
                 console.log(argume[i]);
+               lista = (`${lista} 1 ${argume[i]}`);
                }
                return lista;
               }
-            
 
+*/
+
+
+const numbers = ['kki', 'jjk', 3, 4, 5];
+const doubled = numbers.map((number, key) => <li>{number}{key}</li>);
+console.log(doubled);
+
+
+
+            
+  let  divCounters = (
+    <div className="counters">
+          biggg kki
+    </div>
+   );
+  
             return (
               <div>
       <div className="content">
@@ -115,11 +136,9 @@
                <p> state: {this.state.seconds}</p>
                
                 <p>{this.pad0(this.minutes)} : {this.pad0(this.seconds)} : {this.pad0(this.miliseconds)}</p>
-                
-                <p>kki</p>
-                <p>{this.kki}</p>
-                <p>{logAllArgumentsStary(argume)}</p>
- 
+
+                <ol> {doubled}</ol>
+              {divCounters}
               </div>
             );
           }
