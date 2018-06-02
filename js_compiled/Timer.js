@@ -82,7 +82,7 @@ class Timer extends React.Component {
     this.resoultsTable = [];
   }
   render() {
-    const listElement = this.resoultsTable.map((number, key) => React.createElement(
+    const listElement = this.resoultsTable.map((time, key) => React.createElement(
       "li",
       { className: "list-group-item" },
       React.createElement(
@@ -93,7 +93,7 @@ class Timer extends React.Component {
         ":"
       ),
       " ",
-      number
+      time
     ));
     return React.createElement(
       "div",

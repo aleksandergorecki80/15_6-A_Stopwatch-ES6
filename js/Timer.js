@@ -84,9 +84,9 @@ class Timer extends React.Component {
     this.resoultsTable = [];
   }
   render() {
-    const listElement = this.resoultsTable.map((number, key) => (
+    const listElement = this.resoultsTable.map((time, key) => (
       <li className="list-group-item">
-        <span>Score no. {key + 1}:</span> {number}
+        <span>Score no. {key + 1}:</span> {time}
       </li>
     ));
     return (
