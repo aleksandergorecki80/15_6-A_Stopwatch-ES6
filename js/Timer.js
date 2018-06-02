@@ -4,6 +4,9 @@
             this.state = { 
               handler: 0 
             };
+            this.state = {
+              running: false
+            };
             this.miliseconds = this.props.miliseconds;
             this.seconds = this.props.seconds;
             this.minutes = this.props.minutes;
@@ -28,28 +31,77 @@
             }
 
             pad0(value) {
-              console.log('pad0');
               let result = value.toString();
               if (result.length < 2) {
               result = "0" + result;
               }
               return result;
             }
+/*
+            saveResoult(savedTime){
+              let result =savedTime.toString()
+              return result;
+            }
+*/
+        test(){
+          let savedTime = `${this.pad0(this.minutes)} : ${this.pad0(this.seconds)} : ${this.pad0(this.miliseconds)}`;
+          let result =savedTime.toString()
+              return result;
+        }
 
-          componentDidMount() {
+          start() {
+            if (!this.state.running) {
+            this.setState({
+              running: true
+            });
             this.interval = setInterval(() => this.step(), 10);
           }
+        }
 
-          componentWillUnmount() {
+          stop() {
             clearInterval(this.interval);
-          }
+            this.setState({
+              running: false
+            });
+          
+
+        }
 
           render() {
+           console.log(this.state.running);
             return (
               <div>
+      <div className="content">
+        <div className="controls">
+          <a className="button" href="#" onClick={this.start.bind(this)}>
+            Start
+          </a>
+          <a className="button" href="#" onClick={this.stop.bind(this)}>
+            Stop
+          </a>
+          <a className="button" href="#">
+            Reset
+          </a>
+          <a className="button" href="#" id="saveResoult">
+          </a>
+          <a className="button" href="#" id="clearResoults">
+            Clean resoult
+          </a>
+        </div>
+        <ol id="resoults" />
+        
+      </div>
+
+
+
+
+
                <p> state: {this.state.seconds}</p>
                
                 <p>{this.pad0(this.minutes)} : {this.pad0(this.seconds)} : {this.pad0(this.miliseconds)}</p>
+                <ol>
+                  <li>{this.test()}kki</li>
+                </ol>
               </div>
             );
           }

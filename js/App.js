@@ -10,12 +10,8 @@ class App extends React.Component {
       <div>
          
           <Timer />
-          <LifeStages componentName="App" />
+          
       </div>
   );
  }
 }
-
-
-
-

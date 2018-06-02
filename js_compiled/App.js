@@ -9,8 +9,7 @@ class App extends React.Component {
     return React.createElement(
       "div",
       null,
-      React.createElement(Timer, null),
-      React.createElement(LifeStages, { componentName: "App" })
+      React.createElement(Timer, null)
     );
   }
 }
