@@ -8,8 +8,8 @@ class App extends React.Component {
  render() {
   return (
       <div>
-          <Stopwatch /> 
-          
+         
+          <Timer />
           <LifeStages componentName="App" />
       </div>
   );

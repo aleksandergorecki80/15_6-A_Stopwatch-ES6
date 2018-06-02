@@ -1,16 +1,16 @@
 
 
 class App extends React.Component {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    render() {
-        return React.createElement(
-            "div",
-            null,
-            React.createElement(Stopwatch, null),
-            React.createElement(LifeStages, { componentName: "App" })
-        );
-    }
+  render() {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(Timer, null),
+      React.createElement(LifeStages, { componentName: "App" })
+    );
+  }
 }
