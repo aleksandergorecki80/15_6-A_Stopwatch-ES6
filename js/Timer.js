@@ -10,6 +10,7 @@
             this.miliseconds = this.props.miliseconds;
             this.seconds = this.props.seconds;
             this.minutes = this.props.minutes;
+            this.namesDest = [1];
           }
 
           step() {
@@ -37,17 +38,10 @@
               }
               return result;
             }
-/*
-            saveResoult(savedTime){
-              let result =savedTime.toString()
-              return result;
-            }
-*/
-        test(){
-          let savedTime = `${this.pad0(this.minutes)} : ${this.pad0(this.seconds)} : ${this.pad0(this.miliseconds)}`;
-          let result =savedTime.toString()
-              return result;
-        }
+
+
+
+        save
 
           start() {
             if (!this.state.running) {
@@ -75,8 +69,19 @@
             this.minutes = this.props.minutes;
         }
 
+        savedTime(){
+          console.log('save0');
+          let savedTime = `${this.pad0(this.minutes)} : ${this.pad0(this.seconds)} : ${this.pad0(this.miliseconds)}`;
+          let result = savedTime.toString();
+          this.namesDest = [...this.namesDest, result];
+          console.log(this.namesDest);
+        }
+
+        
+
           render() {
-           console.log(this.state.running);
+           //console.log(this.state.running);
+           console.log(this.namesDest);
             return (
               <div>
       <div className="content">
@@ -90,25 +95,20 @@
           <a className="button" href="#" onClick={this.reset.bind(this)}>
             Reset
           </a>
-          <a className="button" href="#" id="saveResoult">Save resoults
+          <a className="button" href="#" onClick={this.savedTime.bind(this)}>Save resoults
           </a>
-          <a className="button" href="#" id="clearResoults">
+          <a className="button" href="#">
             Clean resoult
           </a>
         </div>
         <ol id="resoults" />
         
       </div>
-
-
-
-
-
                <p> state: {this.state.seconds}</p>
                
                 <p>{this.pad0(this.minutes)} : {this.pad0(this.seconds)} : {this.pad0(this.miliseconds)}</p>
                 <ol>
-                  <li>{this.test()}kki</li>
+                  <li>{this.namesDest}kki</li>
                 </ol>
               </div>
             );

@@ -10,6 +10,7 @@ class Timer extends React.Component {
     this.miliseconds = this.props.miliseconds;
     this.seconds = this.props.seconds;
     this.minutes = this.props.minutes;
+    this.namesDest = [1];
   }
 
   step() {
@@ -35,17 +36,6 @@ class Timer extends React.Component {
     if (result.length < 2) {
       result = "0" + result;
     }
-    return result;
-  }
-  /*
-              saveResoult(savedTime){
-                let result =savedTime.toString()
-                return result;
-              }
-  */
-  test() {
-    let savedTime = `${this.pad0(this.minutes)} : ${this.pad0(this.seconds)} : ${this.pad0(this.miliseconds)}`;
-    let result = savedTime.toString();
     return result;
   }
 
@@ -75,68 +65,77 @@ class Timer extends React.Component {
     this.minutes = this.props.minutes;
   }
 
+  savedTime() {
+    console.log('save0');
+    let savedTime = `${this.pad0(this.minutes)} : ${this.pad0(this.seconds)} : ${this.pad0(this.miliseconds)}`;
+    let result = savedTime.toString();
+    this.namesDest = [...this.namesDest, result];
+    console.log(this.namesDest);
+  }
+
   render() {
-    console.log(this.state.running);
+    //console.log(this.state.running);
+    console.log(this.namesDest);
     return React.createElement(
-      "div",
+      'div',
       null,
       React.createElement(
-        "div",
-        { className: "content" },
+        'div',
+        { className: 'content' },
         React.createElement(
-          "div",
-          { className: "controls" },
+          'div',
+          { className: 'controls' },
           React.createElement(
-            "a",
-            { className: "button", href: "#", onClick: this.start.bind(this) },
-            "Start"
+            'a',
+            { className: 'button', href: '#', onClick: this.start.bind(this) },
+            'Start'
           ),
           React.createElement(
-            "a",
-            { className: "button", href: "#", onClick: this.stop.bind(this) },
-            "Stop"
+            'a',
+            { className: 'button', href: '#', onClick: this.stop.bind(this) },
+            'Stop'
           ),
           React.createElement(
-            "a",
-            { className: "button", href: "#", onClick: this.reset.bind(this) },
-            "Reset"
+            'a',
+            { className: 'button', href: '#', onClick: this.reset.bind(this) },
+            'Reset'
           ),
           React.createElement(
-            "a",
-            { className: "button", href: "#", id: "saveResoult" },
-            "Save resoults"
+            'a',
+            { className: 'button', href: '#', onClick: this.savedTime.bind(this) },
+            'Save resoults'
           ),
           React.createElement(
-            "a",
-            { className: "button", href: "#", id: "clearResoults" },
-            "Clean resoult"
+            'a',
+            { className: 'button', href: '#' },
+            'Clean resoult'
           )
         ),
-        React.createElement("ol", { id: "resoults" })
+        React.createElement('ol', { id: 'resoults' })
       ),
       React.createElement(
-        "p",
+        'p',
         null,
-        " state: ",
+        ' state: ',
         this.state.seconds
       ),
       React.createElement(
-        "p",
+        'p',
         null,
         this.pad0(this.minutes),
-        " : ",
+        ' : ',
         this.pad0(this.seconds),
-        " : ",
+        ' : ',
         this.pad0(this.miliseconds)
       ),
       React.createElement(
-        "ol",
+        'ol',
         null,
         React.createElement(
-          "li",
+          'li',
           null,
-          this.test(),
-          "kki"
+          this.namesDest,
+          'kki'
         )
       )
     );
