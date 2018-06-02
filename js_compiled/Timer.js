@@ -57,12 +57,11 @@ class Timer extends React.Component {
       React.createElement(
         "p",
         null,
-        this.pad0(this.miliseconds),
+        this.pad0(this.minutes),
         " : ",
         this.pad0(this.seconds),
-        " :  ",
-        this.minutes,
-        " "
+        " : ",
+        this.pad0(this.miliseconds)
       )
     );
   }

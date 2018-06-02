@@ -49,7 +49,7 @@
               <div>
                <p> state: {this.state.seconds}</p>
                
-                <p>{this.pad0(this.miliseconds)} : {this.pad0(this.seconds)} :  {this.minutes} </p>
+                <p>{this.pad0(this.minutes)} : {this.pad0(this.seconds)} : {this.pad0(this.miliseconds)}</p>
               </div>
             );
           }
