@@ -87,8 +87,14 @@ class Timer extends React.Component {
     const listElement = this.resoultsTable.map((number, key) => React.createElement(
       "li",
       null,
-      key,
-      ": ",
+      React.createElement(
+        "span",
+        null,
+        "Score no. ",
+        key,
+        ":"
+      ),
+      " ",
       number
     ));
 

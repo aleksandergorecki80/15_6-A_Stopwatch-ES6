@@ -84,7 +84,7 @@
 
           render() {
             console.log(this.resoultsTable);
-            const listElement = this.resoultsTable.map((number, key) => <li>{key}: {number}</li>);
+            const listElement = this.resoultsTable.map((number, key) => <li><span>Score no. {key}:</span> {number}</li>);
   
             return (
               <div>
