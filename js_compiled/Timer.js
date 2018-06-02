@@ -1,7 +1,6 @@
 class Timer extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       handler: 0
     };
@@ -77,30 +76,23 @@ class Timer extends React.Component {
       resoults: prevState.results + 1
     }));
   }
+  cleanResoults() {
+    this.setState({
+      results: 0
+    });
+    this.resoultsTable = [];
+  }
 
   render() {
     console.log(this.resoultsTable);
-    /*
-                let argume = ['raz', 'dwa', 'trzy'];
-                function logAllArgumentsStary(argume) {
-                    //let lista=<h2> nam </h2>;
-                    let lista='';
-                    //let lista=<h2> nam </h2>;
-               for (var i=0; i < argume.length; i++) {
-                    console.log(argume[i]);
-                   lista = (`${lista} 1 ${argume[i]}`);
-                   }
-                   return lista;
-                  }
-    
-    */
 
     const numbers = ['kki', 'jjk', 3, 4, 5];
-    const doubled = numbers.map((number, key) => React.createElement(
+    const doubled = this.resoultsTable.map((number, key) => React.createElement(
       'li',
       null,
-      number,
-      key
+      key,
+      ' - ',
+      number
     ));
     console.log(doubled);
 
@@ -141,7 +133,7 @@ class Timer extends React.Component {
           ),
           React.createElement(
             'a',
-            { className: 'button', href: '#' },
+            { className: 'button', href: '#', onClick: this.cleanResoults.bind(this) },
             'Clean resoult'
           )
         ),
@@ -163,7 +155,7 @@ class Timer extends React.Component {
         this.pad0(this.miliseconds)
       ),
       React.createElement(
-        'ol',
+        'ul',
         null,
         ' ',
         doubled

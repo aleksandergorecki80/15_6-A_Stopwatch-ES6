@@ -1,9 +1,6 @@
  class Timer extends React.Component {
           constructor(props) {
             super(props);
-
-
-
             this.state = { 
               handler: 0 
             };
@@ -79,27 +76,18 @@
               resoults: prevState.results + 1
             }));
         } 
+        cleanResoults(){
+        this.setState({
+          results: 0
+        });
+          this.resoultsTable = [];
+        }
 
           render() {
             console.log(this.resoultsTable);
-/*
-            let argume = ['raz', 'dwa', 'trzy'];
-            function logAllArgumentsStary(argume) {
-                //let lista=<h2> nam </h2>;
-                let lista='';
-                //let lista=<h2> nam </h2>;
-           for (var i=0; i < argume.length; i++) {
-                console.log(argume[i]);
-               lista = (`${lista} 1 ${argume[i]}`);
-               }
-               return lista;
-              }
-
-*/
-
 
 const numbers = ['kki', 'jjk', 3, 4, 5];
-const doubled = numbers.map((number, key) => <li>{number}{key}</li>);
+const doubled = this.resoultsTable.map((number, key) => <li>{key} - {number}</li>);
 console.log(doubled);
 
 
@@ -126,7 +114,7 @@ console.log(doubled);
           </a>
           <a className="button" href="#" onClick={this.savedTime.bind(this)}>Save resoults
           </a>
-          <a className="button" href="#">
+          <a className="button" href="#" onClick={this.cleanResoults.bind(this)}>
             Clean resoult
           </a>
         </div>
@@ -137,7 +125,7 @@ console.log(doubled);
                
                 <p>{this.pad0(this.minutes)} : {this.pad0(this.seconds)} : {this.pad0(this.miliseconds)}</p>
 
-                <ol> {doubled}</ol>
+                <ul> {doubled}</ul>
               {divCounters}
               </div>
             );
