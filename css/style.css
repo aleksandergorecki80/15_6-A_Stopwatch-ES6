@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  border: 1px solid red;
 }
 
 .controls {
@@ -14,7 +13,7 @@ min-width: 80px;
 }
 
 .list-group{
-	display: flex;
+display: flex;
 flex-direction: column-reverse;
 }
 
@@ -23,4 +22,12 @@ flex-direction: column-reverse;
 	content:"";
 	display: table ;
 	clear: both;
+}
+
+span {
+	font-weight: bold;
+}
+
+h1 {
+	color: green;
 }

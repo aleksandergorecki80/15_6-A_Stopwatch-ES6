@@ -93,10 +93,10 @@
                   <a className="btn btn-warning" href="#" onClick={this.savedTime.bind(this)}>Save resoults</a>
                   <a className="btn btn-warning" href="#" onClick={this.cleanResoults.bind(this)}>Clean resoult</a>
                 </div>
-                <div className="display">
-                  <p>{this.pad0(this.minutes)} 
+                <div className="text-center">
+                  <h1>{this.pad0(this.minutes)} 
                   : {this.pad0(this.seconds)} 
-                  : {this.pad0(this.miliseconds)}</p>
+                  : {this.pad0(this.miliseconds)}</h1>
                 </div>
                 <div className="text-center">
                   <ul className="list-group">{listElement}</ul>

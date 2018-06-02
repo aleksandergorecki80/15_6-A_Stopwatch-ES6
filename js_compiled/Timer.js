@@ -129,9 +129,9 @@ class Timer extends React.Component {
       ),
       React.createElement(
         "div",
-        { className: "display" },
+        { className: "text-center" },
         React.createElement(
-          "p",
+          "h1",
           null,
           this.pad0(this.minutes),
           ": ",
