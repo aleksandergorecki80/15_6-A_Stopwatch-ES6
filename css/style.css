@@ -1,33 +1,26 @@
 * {
   box-sizing: border-box;
 }
-
 .controls {
-	
-	height: 100%;
-	text-align: center;
+  height: 100%;
+  text-align: center;
 }
 .btn {
-margin: 10px;
-min-width: 80px;
+  margin: 10px;
+  min-width: 80px;
 }
-
-.list-group{
-display: flex;
-flex-direction: column-reverse;
+.list-group {
+  display: flex;
+  flex-direction: column-reverse;
 }
-
-.controls::before,
-.controls::after {
-	content:"";
-	display: table ;
-	clear: both;
+.controls::before, .controls::after {
+  content: "";
+  display: table;
+  clear: both;
 }
-
 span {
-	font-weight: bold;
+  font-weight: bold;
 }
-
 h1 {
-	color: green;
+  color: green;
 }

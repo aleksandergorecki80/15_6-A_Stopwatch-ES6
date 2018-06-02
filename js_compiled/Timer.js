@@ -13,7 +13,7 @@ class Timer extends React.Component {
     this.miliseconds = this.props.miliseconds;
     this.seconds = this.props.seconds;
     this.minutes = this.props.minutes;
-    this.resoultsTable = this.props.resoultsTable;;
+    this.resoultsTable = this.props.resoultsTable;
   }
 
   step() {
@@ -97,7 +97,7 @@ class Timer extends React.Component {
     ));
     return React.createElement(
       "div",
-      { className: "content" },
+      { className: "container" },
       React.createElement(
         "div",
         { className: "controls" },
