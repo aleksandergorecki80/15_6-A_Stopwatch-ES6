@@ -81,36 +81,26 @@
         });
           this.resoultsTable = [];
         }
-
           render() {
-            console.log(this.resoultsTable);
-            const listElement = this.resoultsTable.map((number, key) => <li><span>Score no. {key}:</span> {number}</li>);
-  
+            const listElement = this.resoultsTable.map((number, key) => <li className="list-group-item">
+              <span>Score no. {key+1}:</span> {number}</li>);
             return (
-              <div>
-                <div className="content">
-                  <div className="controls">
-                    <a className="button" href="#" onClick={this.start.bind(this)}>
-                      Start
-                    </a>
-                    <a className="button" href="#" onClick={this.stop.bind(this)}>
-                      Stop
-                    </a>
-                    <a className="button" href="#" onClick={this.reset.bind(this)}>
-                      Reset
-                    </a>
-                    <a className="button" href="#" onClick={this.savedTime.bind(this)}>Save resoults
-                    </a>
-                    <a className="button" href="#" onClick={this.cleanResoults.bind(this)}>
-                      Clean resoult
-                    </a>
-                  </div>
-                  <ol id="resoults" />
-                  
+              <div className="content">
+                <div className="controls">
+                  <a className="btn btn-warning" href="#" onClick={this.start.bind(this)}>Start</a>
+                  <a className="btn btn-warning" href="#" onClick={this.stop.bind(this)}>Stop</a>
+                  <a className="btn btn-warning" href="#" onClick={this.reset.bind(this)}>Reset</a>
+                  <a className="btn btn-warning" href="#" onClick={this.savedTime.bind(this)}>Save resoults</a>
+                  <a className="btn btn-warning" href="#" onClick={this.cleanResoults.bind(this)}>Clean resoult</a>
                 </div>
-               <p> state: {this.state.seconds}</p>
-                <p>{this.pad0(this.minutes)} : {this.pad0(this.seconds)} : {this.pad0(this.miliseconds)}</p>
-                <ul> {listElement}</ul>
+                <div className="display">
+                  <p>{this.pad0(this.minutes)} 
+                  : {this.pad0(this.seconds)} 
+                  : {this.pad0(this.miliseconds)}</p>
+                </div>
+                <div className="text-center">
+                  <ul className="list-group">{listElement}</ul>
+                </div>
               </div>
             );
           }

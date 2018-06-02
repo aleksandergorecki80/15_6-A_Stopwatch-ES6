@@ -81,80 +81,73 @@ class Timer extends React.Component {
     });
     this.resoultsTable = [];
   }
-
   render() {
-    console.log(this.resoultsTable);
     const listElement = this.resoultsTable.map((number, key) => React.createElement(
       "li",
-      null,
+      { className: "list-group-item" },
       React.createElement(
         "span",
         null,
         "Score no. ",
-        key,
+        key + 1,
         ":"
       ),
       " ",
       number
     ));
-
     return React.createElement(
       "div",
-      null,
+      { className: "content" },
       React.createElement(
         "div",
-        { className: "content" },
+        { className: "controls" },
         React.createElement(
-          "div",
-          { className: "controls" },
-          React.createElement(
-            "a",
-            { className: "button", href: "#", onClick: this.start.bind(this) },
-            "Start"
-          ),
-          React.createElement(
-            "a",
-            { className: "button", href: "#", onClick: this.stop.bind(this) },
-            "Stop"
-          ),
-          React.createElement(
-            "a",
-            { className: "button", href: "#", onClick: this.reset.bind(this) },
-            "Reset"
-          ),
-          React.createElement(
-            "a",
-            { className: "button", href: "#", onClick: this.savedTime.bind(this) },
-            "Save resoults"
-          ),
-          React.createElement(
-            "a",
-            { className: "button", href: "#", onClick: this.cleanResoults.bind(this) },
-            "Clean resoult"
-          )
+          "a",
+          { className: "btn btn-warning", href: "#", onClick: this.start.bind(this) },
+          "Start"
         ),
-        React.createElement("ol", { id: "resoults" })
+        React.createElement(
+          "a",
+          { className: "btn btn-warning", href: "#", onClick: this.stop.bind(this) },
+          "Stop"
+        ),
+        React.createElement(
+          "a",
+          { className: "btn btn-warning", href: "#", onClick: this.reset.bind(this) },
+          "Reset"
+        ),
+        React.createElement(
+          "a",
+          { className: "btn btn-warning", href: "#", onClick: this.savedTime.bind(this) },
+          "Save resoults"
+        ),
+        React.createElement(
+          "a",
+          { className: "btn btn-warning", href: "#", onClick: this.cleanResoults.bind(this) },
+          "Clean resoult"
+        )
       ),
       React.createElement(
-        "p",
-        null,
-        " state: ",
-        this.state.seconds
+        "div",
+        { className: "display" },
+        React.createElement(
+          "p",
+          null,
+          this.pad0(this.minutes),
+          ": ",
+          this.pad0(this.seconds),
+          ": ",
+          this.pad0(this.miliseconds)
+        )
       ),
       React.createElement(
-        "p",
-        null,
-        this.pad0(this.minutes),
-        " : ",
-        this.pad0(this.seconds),
-        " : ",
-        this.pad0(this.miliseconds)
-      ),
-      React.createElement(
-        "ul",
-        null,
-        " ",
-        listElement
+        "div",
+        { className: "text-center" },
+        React.createElement(
+          "ul",
+          { className: "list-group" },
+          listElement
+        )
       )
     );
   }
