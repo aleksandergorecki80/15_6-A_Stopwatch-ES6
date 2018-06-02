@@ -63,8 +63,16 @@
             this.setState({
               running: false
             });
-          
+        }
 
+        reset(){
+          console.log('RESET');
+          this.setState({
+              handler: 0
+            });
+            this.miliseconds = this.props.miliseconds;
+            this.seconds = this.props.seconds;
+            this.minutes = this.props.minutes;
         }
 
           render() {
@@ -79,10 +87,10 @@
           <a className="button" href="#" onClick={this.stop.bind(this)}>
             Stop
           </a>
-          <a className="button" href="#">
+          <a className="button" href="#" onClick={this.reset.bind(this)}>
             Reset
           </a>
-          <a className="button" href="#" id="saveResoult">
+          <a className="button" href="#" id="saveResoult">Save resoults
           </a>
           <a className="button" href="#" id="clearResoults">
             Clean resoult

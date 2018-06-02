@@ -65,6 +65,16 @@ class Timer extends React.Component {
     });
   }
 
+  reset() {
+    console.log('RESET');
+    this.setState({
+      handler: 0
+    });
+    this.miliseconds = this.props.miliseconds;
+    this.seconds = this.props.seconds;
+    this.minutes = this.props.minutes;
+  }
+
   render() {
     console.log(this.state.running);
     return React.createElement(
@@ -88,10 +98,14 @@ class Timer extends React.Component {
           ),
           React.createElement(
             "a",
-            { className: "button", href: "#" },
+            { className: "button", href: "#", onClick: this.reset.bind(this) },
             "Reset"
           ),
-          React.createElement("a", { className: "button", href: "#", id: "saveResoult" }),
+          React.createElement(
+            "a",
+            { className: "button", href: "#", id: "saveResoult" },
+            "Save resoults"
+          ),
           React.createElement(
             "a",
             { className: "button", href: "#", id: "clearResoults" },
