@@ -56,13 +56,14 @@ class Timer extends React.Component {
     this.setState({
       resoultsTable: [...this.state.resoultsTable, result]
     });
-    this.resoultsTable = [...this.state.resoultsTable, result];
   }
+
   cleanResoults() {
     this.setState({
       resoultsTable: []
     });
   }
+  
   render() {
     const listElement = this.state.resoultsTable.map((time, key) => (
       <Display key={key + 1} time={time} />
