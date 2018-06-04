@@ -40,9 +40,6 @@ class Timer extends React.Component {
 
   reset() {
     this.setState({
-      handler: 0
-    });
-    this.setState({
       miliseconds: 0,
       seconds: 0,
       minutes: 0
@@ -63,7 +60,7 @@ class Timer extends React.Component {
   }
 
   render() {
-    const listElement = this.state.resoultsTable.map((time, key) => React.createElement(Display, { key: key + 1, time: time }));
+    const listElement = this.state.resoultsTable.map((time, key) => React.createElement(Display, { key: key, time: time }));
     return React.createElement(
       "div",
       { className: "container" },
