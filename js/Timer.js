@@ -85,31 +85,51 @@ class Timer extends React.Component {
   }
   render() {
     const listElement = this.resoultsTable.map((time, key) => (
-      <Display key={key + 1} time={time}/>
+      <Display key={key + 1} time={time} />
     ));
     return (
       <div className="container">
         <div className="controls">
-          <a className="btn btn-warning" href="#" onClick={this.start.bind(this)}>
+          <a
+            className="btn btn-warning"
+            href="#"
+            onClick={this.start.bind(this)}
+          >
             Start
           </a>
-          <a className="btn btn-warning" href="#" onClick={this.stop.bind(this)}>
+          <a
+            className="btn btn-warning"
+            href="#"
+            onClick={this.stop.bind(this)}
+          >
             Stop
           </a>
-          <a className="btn btn-warning" href="#" onClick={this.reset.bind(this)}>
+          <a
+            className="btn btn-warning"
+            href="#"
+            onClick={this.reset.bind(this)}
+          >
             Reset
           </a>
-          <a className="btn btn-warning" href="#" onClick={this.savedTime.bind(this)}>
+          <a
+            className="btn btn-warning"
+            href="#"
+            onClick={this.savedTime.bind(this)}
+          >
             Save resoults
           </a>
-          <a className="btn btn-warning" href="#" onClick={this.cleanResoults.bind(this)}>
+          <a
+            className="btn btn-warning"
+            href="#"
+            onClick={this.cleanResoults.bind(this)}
+          >
             Clean resoult
           </a>
         </div>
         <div className="text-center time">
-            {this.pad0(this.minutes)}
-            : {this.pad0(this.seconds)}
-            : {this.pad0(this.miliseconds)}  
+          {this.pad0(this.minutes)}
+          : {this.pad0(this.seconds)}
+          : {this.pad0(this.miliseconds)}
         </div>
         <div className="text-center">
           <ol className="list-group">{listElement}</ol>
