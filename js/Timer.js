@@ -3,7 +3,6 @@ class Timer extends React.Component {
     super(props);
     this.state = {
       running: false,
-      results: 0,
       miliseconds: 0,
       seconds: 0,
       minutes: 0,
@@ -13,18 +12,15 @@ class Timer extends React.Component {
 
   step() {
     this.setState(prevState => ({ miliseconds: prevState.miliseconds + 1 }));
-
     if (this.state.miliseconds >= 100) {
       this.setState(prevState => ({ seconds: prevState.seconds + 1 }));
-      this.setState({miliseconds: 0});
+      this.setState({ miliseconds: 0 });
     }
     if (this.state.seconds >= 60) {
       this.setState(prevState => ({ minutes: prevState.minutes + 1 }));
-     this.setState({seconds: 0});
+      this.setState({ seconds: 0 });
     }
   }
-
-
 
   start() {
     if (!this.state.running) {
@@ -46,26 +42,24 @@ class Timer extends React.Component {
     this.setState({
       handler: 0
     });
-      this.setState({
-        miliseconds: 0,
-        seconds: 0,
-        minutes: 0
-      });
+    this.setState({
+      miliseconds: 0,
+      seconds: 0,
+      minutes: 0
+    });
   }
 
   savedTime() {
-    let savedTime = `${pad0(this.state.minutes)} : ${pad0(
+    let result = `${pad0(this.state.minutes)} : ${pad0(
       this.state.seconds
     )} : ${pad0(this.state.miliseconds)}`;
-    let result = savedTime.toString();
+    this.setState({
+      resoultsTable: [...this.state.resoultsTable, result]
+    });
     this.resoultsTable = [...this.state.resoultsTable, result];
-    this.setState(prevState => ({
-      resoults: prevState.results + 1
-    }));
   }
   cleanResoults() {
     this.setState({
-      results: 0,
       resoultsTable: []
     });
   }
@@ -117,7 +111,7 @@ class Timer extends React.Component {
           : {pad0(this.state.seconds)}
           : {pad0(this.state.miliseconds)}
         </div>
-        <div className="text-center">
+        <div className="text-center results-list">
           <ol className="list-group">{listElement}</ol>
         </div>
       </div>
@@ -125,10 +119,10 @@ class Timer extends React.Component {
   }
 }
 
-  function pad0(value) {
-    let result = value.toString();
-    if (result.length < 2) {
-      result = "0" + result;
-    }
-    return result;
+function pad0(value) {
+  let result = value.toString();
+  if (result.length < 2) {
+    result = "0" + result;
   }
+  return result;
+}

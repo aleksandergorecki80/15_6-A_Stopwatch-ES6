@@ -3,7 +3,6 @@ class Timer extends React.Component {
     super(props);
     this.state = {
       running: false,
-      results: 0,
       miliseconds: 0,
       seconds: 0,
       minutes: 0,
@@ -13,7 +12,6 @@ class Timer extends React.Component {
 
   step() {
     this.setState(prevState => ({ miliseconds: prevState.miliseconds + 1 }));
-
     if (this.state.miliseconds >= 100) {
       this.setState(prevState => ({ seconds: prevState.seconds + 1 }));
       this.setState({ miliseconds: 0 });
@@ -52,16 +50,14 @@ class Timer extends React.Component {
   }
 
   savedTime() {
-    let savedTime = `${pad0(this.state.minutes)} : ${pad0(this.state.seconds)} : ${pad0(this.state.miliseconds)}`;
-    let result = savedTime.toString();
+    let result = `${pad0(this.state.minutes)} : ${pad0(this.state.seconds)} : ${pad0(this.state.miliseconds)}`;
+    this.setState({
+      resoultsTable: [...this.state.resoultsTable, result]
+    });
     this.resoultsTable = [...this.state.resoultsTable, result];
-    this.setState(prevState => ({
-      resoults: prevState.results + 1
-    }));
   }
   cleanResoults() {
     this.setState({
-      results: 0,
       resoultsTable: []
     });
   }
@@ -130,7 +126,7 @@ class Timer extends React.Component {
       ),
       React.createElement(
         "div",
-        { className: "text-center" },
+        { className: "text-center results-list" },
         React.createElement(
           "ol",
           { className: "list-group" },

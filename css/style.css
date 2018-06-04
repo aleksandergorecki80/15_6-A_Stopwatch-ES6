@@ -1,12 +1,16 @@
 * {
   box-sizing: border-box;
+  //border: 1px solid red;
+}
+.container{
+  width: 50%;
 }
 .controls {
   height: 100%;
   text-align: center;
 }
 .btn {
-  margin: 10px;
+  margin: 5px;
   min-width: 80px;
 }
 .list-group {
@@ -21,4 +25,9 @@
 .time {
   color: green;
   font-size: 36px;
+}
+
+.results-list {
+margin: 0 auto;
+width: 80%;
 }
