@@ -12,24 +12,16 @@ class Timer extends React.Component {
   }
 
   step() {
-    this.setState({ handler: 0 });
-
-    this.setState(prevState => ({ miliseconds: prevState.counter + 1 }));
+    this.setState(prevState => ({ miliseconds: prevState.miliseconds + 1 }));
 
     if (this.state.miliseconds >= 100) {
-      this.setState(prevState => ({ seconds: prevState.counter + 1 }));
+      this.setState(prevState => ({ seconds: prevState.seconds + 1 }));
       this.setState({ miliseconds: 0 });
     }
     if (this.state.seconds >= 60) {
-      this.setState(prevState => ({ minutes: prevState.counter + 1 }));
+      this.setState(prevState => ({ minutes: prevState.minutes + 1 }));
       this.setState({ seconds: 0 });
     }
-
-    this.setState({
-      miliseconds: pad0(this.state.miliseconds),
-      seconds: pad0(this.state.seconds),
-      minutes: pad0(this.state.minutes)
-    });
   }
 
   start() {
@@ -60,9 +52,9 @@ class Timer extends React.Component {
   }
 
   savedTime() {
-    let savedTime = `${pad0(this.minutes)} : ${pad0(this.seconds)} : ${pad0(this.miliseconds)}`;
+    let savedTime = `${pad0(this.state.minutes)} : ${pad0(this.state.seconds)} : ${pad0(this.state.miliseconds)}`;
     let result = savedTime.toString();
-    this.resoultsTable = [...this.resoultsTable, result];
+    this.resoultsTable = [...this.state.resoultsTable, result];
     this.setState(prevState => ({
       resoults: prevState.results + 1
     }));
@@ -74,7 +66,7 @@ class Timer extends React.Component {
     });
   }
   render() {
-    const listElement = this.resoultsTable.map((time, key) => React.createElement(Display, { key: key + 1, time: time }));
+    const listElement = this.state.resoultsTable.map((time, key) => React.createElement(Display, { key: key + 1, time: time }));
     return React.createElement(
       "div",
       { className: "container" },
@@ -130,11 +122,11 @@ class Timer extends React.Component {
       React.createElement(
         "div",
         { className: "text-center time" },
-        this.pad0(this.minutes),
+        pad0(this.state.minutes),
         ": ",
-        this.pad0(this.seconds),
+        pad0(this.state.seconds),
         ": ",
-        this.pad0(this.miliseconds)
+        pad0(this.state.miliseconds)
       ),
       React.createElement(
         "div",
