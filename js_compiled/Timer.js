@@ -82,19 +82,7 @@ class Timer extends React.Component {
     this.resoultsTable = [];
   }
   render() {
-    const listElement = this.resoultsTable.map((time, key) => React.createElement(
-      "li",
-      { className: "list-group-item" },
-      React.createElement(
-        "span",
-        null,
-        "Score no. ",
-        key + 1,
-        ":"
-      ),
-      " ",
-      time
-    ));
+    const listElement = this.resoultsTable.map((time, key) => React.createElement(Display, { key: key + 1, time: time }));
     return React.createElement(
       "div",
       { className: "container" },
@@ -129,22 +117,18 @@ class Timer extends React.Component {
       ),
       React.createElement(
         "div",
-        { className: "text-center" },
-        React.createElement(
-          "h1",
-          null,
-          this.pad0(this.minutes),
-          ": ",
-          this.pad0(this.seconds),
-          ": ",
-          this.pad0(this.miliseconds)
-        )
+        { className: "text-center time" },
+        this.pad0(this.minutes),
+        ": ",
+        this.pad0(this.seconds),
+        ": ",
+        this.pad0(this.miliseconds)
       ),
       React.createElement(
         "div",
         { className: "text-center" },
         React.createElement(
-          "ul",
+          "ol",
           { className: "list-group" },
           listElement
         )

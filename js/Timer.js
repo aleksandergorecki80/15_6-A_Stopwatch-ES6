@@ -85,9 +85,7 @@ class Timer extends React.Component {
   }
   render() {
     const listElement = this.resoultsTable.map((time, key) => (
-      <li className="list-group-item">
-        <span>Score no. {key + 1}:</span> {time}
-      </li>
+      <Display key={key + 1} time={time}/>
     ));
     return (
       <div className="container">
@@ -108,15 +106,13 @@ class Timer extends React.Component {
             Clean resoult
           </a>
         </div>
-        <div className="text-center">
-          <h1>
+        <div className="text-center time">
             {this.pad0(this.minutes)}
             : {this.pad0(this.seconds)}
-            : {this.pad0(this.miliseconds)}
-          </h1>
+            : {this.pad0(this.miliseconds)}  
         </div>
         <div className="text-center">
-          <ul className="list-group">{listElement}</ul>
+          <ol className="list-group">{listElement}</ol>
         </div>
       </div>
     );

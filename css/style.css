@@ -18,9 +18,8 @@
   display: table;
   clear: both;
 }
-span {
-  font-weight: bold;
-}
-h1 {
+
+.time {
   color: green;
+  font-size: 36px;
 }
