@@ -16,11 +16,10 @@
 .list-group {
   display: flex;
   flex-direction: column-reverse;
+  list-style: decimal inside;
 }
-.controls::before, .controls::after {
-  content: "";
-  display: table;
-  clear: both;
+.list-group-item {
+  display: list-item;
 }
 .time {
   color: green;

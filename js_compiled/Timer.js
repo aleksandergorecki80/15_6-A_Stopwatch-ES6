@@ -57,7 +57,7 @@ class Timer extends React.Component {
   }
 
   savedTime() {
-    const result = `${pad0(this.state.minutes)} : ${pad0(this.state.seconds)} : ${pad0(this.state.miliseconds)}`;
+    const result = getFormattedTime(this.state.minutes, this.state.seconds, this.state.miliseconds);
     this.setState({
       resoultsTable: [...this.state.resoultsTable, result]
     });
