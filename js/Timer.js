@@ -114,10 +114,8 @@ class Timer extends React.Component {
             Clean resoult
           </a>
         </div>
-        <div className="text-center time">
-          {pad0(this.state.minutes)}
-          : {pad0(this.state.seconds)}
-          : {pad0(this.state.miliseconds)}
+        <div className="text-center time">{getFormattedTime (this.state.minutes, this.state.seconds, this.state.miliseconds)}
+
         </div>
         <div className="text-center results-list">
           <ol className="list-group">{listElement}</ol>
@@ -136,6 +134,7 @@ function pad0(value) {
 }
 
 
-function getFormattedTime (){
-
+function getFormattedTime (minutes, seconds, miliseconds){
+  return `${pad0(minutes)} : ${pad0(seconds)} : ${pad0(miliseconds)}`;
 }
+

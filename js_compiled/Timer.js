@@ -126,11 +126,7 @@ class Timer extends React.Component {
       React.createElement(
         "div",
         { className: "text-center time" },
-        pad0(this.state.minutes),
-        ": ",
-        pad0(this.state.seconds),
-        ": ",
-        pad0(this.state.miliseconds)
+        getFormattedTime(this.state.minutes, this.state.seconds, this.state.miliseconds)
       ),
       React.createElement(
         "div",
@@ -153,4 +149,6 @@ function pad0(value) {
   return result;
 }
 
-function getFormattedTime() {}
+function getFormattedTime(minutes, seconds, miliseconds) {
+  return `${pad0(minutes)} : ${pad0(seconds)} : ${pad0(miliseconds)}`;
+}
