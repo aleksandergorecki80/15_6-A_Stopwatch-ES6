@@ -11,15 +11,25 @@ class Timer extends React.Component {
   }
 
   step() {
-    this.setState(prevState => ({ miliseconds: prevState.miliseconds + 1 }));
-    if (this.state.miliseconds >= 100) {
-      this.setState(prevState => ({ seconds: prevState.seconds + 1 }));
-      this.setState({ miliseconds: 0 });
+    let miliseconds = this.state.miliseconds;
+    let seconds = this.state.seconds;
+    let minutes = this.state.minutes;
+
+    miliseconds++;
+    if (miliseconds >= 100) {
+      seconds++;
+      miliseconds = 0;
     }
-    if (this.state.seconds >= 60) {
-      this.setState(prevState => ({ minutes: prevState.minutes + 1 }));
-      this.setState({ seconds: 0 });
+    if (seconds >= 60) {
+      minutes++;
+      seconds = 0;
     }
+
+    this.setState({
+      miliseconds: miliseconds,
+      seconds: seconds,
+      minutes: minutes
+    });
   }
 
   start() {
@@ -47,7 +57,7 @@ class Timer extends React.Component {
   }
 
   savedTime() {
-    let result = `${pad0(this.state.minutes)} : ${pad0(this.state.seconds)} : ${pad0(this.state.miliseconds)}`;
+    const result = `${pad0(this.state.minutes)} : ${pad0(this.state.seconds)} : ${pad0(this.state.miliseconds)}`;
     this.setState({
       resoultsTable: [...this.state.resoultsTable, result]
     });
@@ -136,9 +146,11 @@ class Timer extends React.Component {
 }
 
 function pad0(value) {
-  const result = value.toString();
+  let result = value.toString();
   if (result.length < 2) {
     result = "0" + result;
   }
   return result;
 }
+
+function getFormattedTime() {}
