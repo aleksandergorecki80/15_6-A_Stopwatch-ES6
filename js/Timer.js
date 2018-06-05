@@ -118,7 +118,7 @@ class Timer extends React.Component {
 }
 
 function pad0(value) {
-  let result = value.toString();
+  const result = value.toString();
   if (result.length < 2) {
     result = "0" + result;
   }
