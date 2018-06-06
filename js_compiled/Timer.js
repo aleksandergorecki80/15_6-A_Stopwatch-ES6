@@ -120,7 +120,7 @@ class Timer extends React.Component {
             href: "#",
             onClick: this.cleanResults.bind(this)
           },
-          "Clean resoult"
+          "Clean results"
         )
       ),
       React.createElement(
