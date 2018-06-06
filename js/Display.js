@@ -5,3 +5,4 @@ class Display extends React.Component {
   </li>;
  }
 }
+

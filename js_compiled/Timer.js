@@ -6,7 +6,7 @@ class Timer extends React.Component {
       miliseconds: 0,
       seconds: 0,
       minutes: 0,
-      resoultsTable: []
+      resultsTable: []
     };
   }
 
@@ -59,18 +59,18 @@ class Timer extends React.Component {
   savedTime() {
     const result = getFormattedTime(this.state.minutes, this.state.seconds, this.state.miliseconds);
     this.setState({
-      resoultsTable: [...this.state.resoultsTable, result]
+      resultsTable: [...this.state.resultsTable, result]
     });
   }
 
-  cleanResoults() {
+  cleanResults() {
     this.setState({
-      resoultsTable: []
+      resultsTable: []
     });
   }
 
   render() {
-    const listElement = this.state.resoultsTable.map((time, key) => React.createElement(Display, { key: key, time: time }));
+    const listElement = this.state.resultsTable.map((time, key) => React.createElement(Display, { key: key, time: time }));
     return React.createElement(
       "div",
       { className: "container" },
@@ -111,14 +111,14 @@ class Timer extends React.Component {
             href: "#",
             onClick: this.savedTime.bind(this)
           },
-          "Save resoults"
+          "Save results"
         ),
         React.createElement(
           "a",
           {
             className: "btn btn-warning",
             href: "#",
-            onClick: this.cleanResoults.bind(this)
+            onClick: this.cleanResults.bind(this)
           },
           "Clean resoult"
         )
