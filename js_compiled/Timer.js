@@ -11,9 +11,7 @@ class Timer extends React.Component {
   }
 
   step() {
-    let miliseconds = this.state.miliseconds;
-    let seconds = this.state.seconds;
-    let minutes = this.state.minutes;
+    let { miliseconds, seconds, minutes } = this.state;
     miliseconds++;
     if (miliseconds >= 100) {
       seconds++;
@@ -24,9 +22,9 @@ class Timer extends React.Component {
       seconds = 0;
     }
     this.setState({
-      miliseconds: miliseconds,
-      seconds: seconds,
-      minutes: minutes
+      miliseconds,
+      seconds,
+      minutes
     });
   }
 
