@@ -11,14 +11,14 @@ class Timer extends React.Component {
   }
 
   step() {
-   let {miliseconds, seconds, minutes} = this.state;
+    let { miliseconds, seconds, minutes } = this.state;
     miliseconds++;
     if (miliseconds >= 100) {
       seconds++;
       miliseconds = 0;
     }
     if (seconds >= 60) {
-      minutes++ ;
+      minutes++;
       seconds = 0;
     }
     this.setState({
@@ -52,9 +52,11 @@ class Timer extends React.Component {
     });
   }
 
-  getFormattedTime (){
-  return `${pad0(this.state.minutes)} : ${pad0(this.state.seconds)} : ${pad0(this.state.miliseconds)}`;
-}
+  getFormattedTime() {
+    return `${pad0(this.state.minutes)} : ${pad0(this.state.seconds)} : ${pad0(
+      this.state.miliseconds
+    )}`;
+  }
 
   savedTime() {
     const result = this.getFormattedTime();
@@ -68,8 +70,6 @@ class Timer extends React.Component {
       resultsTable: []
     });
   }
-
-  
 
   render() {
     const listElement = this.state.resultsTable.map((time, key) => (
@@ -114,9 +114,7 @@ class Timer extends React.Component {
             Clean results
           </a>
         </div>
-        <div className="text-center time">
-          {this.getFormattedTime()}
-        </div>
+        <div className="text-center time">{this.getFormattedTime()}</div>
         <div className="text-center results-list">
           <ol className="list-group">{listElement}</ol>
         </div>
@@ -132,7 +130,3 @@ function pad0(value) {
   }
   return result;
 }
-
-
-
-
