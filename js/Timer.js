@@ -14,17 +14,15 @@ class Timer extends React.Component {
     let miliseconds = this.state.miliseconds;
     let seconds = this.state.seconds;
     let minutes = this.state.minutes;
-
     miliseconds++;
     if (miliseconds >= 100) {
-      seconds ++;
+      seconds++;
       miliseconds = 0;
     }
     if (seconds >= 60) {
-      minutes ++ ;
+      minutes++ ;
       seconds = 0;
     }
-
     this.setState({
       miliseconds: miliseconds,
       seconds: seconds,
@@ -56,8 +54,12 @@ class Timer extends React.Component {
     });
   }
 
+  getFormattedTime (){
+  return `${pad0(this.state.minutes)} : ${pad0(this.state.seconds)} : ${pad0(this.state.miliseconds)}`;
+}
+
   savedTime() {
-    const result = getFormattedTime (this.state.minutes, this.state.seconds, this.state.miliseconds);
+    const result = this.getFormattedTime();
     this.setState({
       resultsTable: [...this.state.resultsTable, result]
     });
@@ -68,6 +70,8 @@ class Timer extends React.Component {
       resultsTable: []
     });
   }
+
+  
 
   render() {
     const listElement = this.state.resultsTable.map((time, key) => (
@@ -113,7 +117,7 @@ class Timer extends React.Component {
           </a>
         </div>
         <div className="text-center time">
-          {getFormattedTime (this.state.minutes, this.state.seconds, this.state.miliseconds)}
+          {this.getFormattedTime()}
         </div>
         <div className="text-center results-list">
           <ol className="list-group">{listElement}</ol>
@@ -131,7 +135,6 @@ function pad0(value) {
   return result;
 }
 
-function getFormattedTime (minutes, seconds, miliseconds){
-  return `${pad0(minutes)} : ${pad0(seconds)} : ${pad0(miliseconds)}`;
-}
+
+
 

@@ -14,7 +14,6 @@ class Timer extends React.Component {
     let miliseconds = this.state.miliseconds;
     let seconds = this.state.seconds;
     let minutes = this.state.minutes;
-
     miliseconds++;
     if (miliseconds >= 100) {
       seconds++;
@@ -24,7 +23,6 @@ class Timer extends React.Component {
       minutes++;
       seconds = 0;
     }
-
     this.setState({
       miliseconds: miliseconds,
       seconds: seconds,
@@ -56,8 +54,12 @@ class Timer extends React.Component {
     });
   }
 
+  getFormattedTime() {
+    return `${pad0(this.state.minutes)} : ${pad0(this.state.seconds)} : ${pad0(this.state.miliseconds)}`;
+  }
+
   savedTime() {
-    const result = getFormattedTime(this.state.minutes, this.state.seconds, this.state.miliseconds);
+    const result = this.getFormattedTime();
     this.setState({
       resultsTable: [...this.state.resultsTable, result]
     });
@@ -126,7 +128,7 @@ class Timer extends React.Component {
       React.createElement(
         "div",
         { className: "text-center time" },
-        getFormattedTime(this.state.minutes, this.state.seconds, this.state.miliseconds)
+        this.getFormattedTime()
       ),
       React.createElement(
         "div",
@@ -147,8 +149,4 @@ function pad0(value) {
     result = "0" + result;
   }
   return result;
-}
-
-function getFormattedTime(minutes, seconds, miliseconds) {
-  return `${pad0(minutes)} : ${pad0(seconds)} : ${pad0(miliseconds)}`;
 }
